@@ -1,0 +1,17 @@
+{
+    "name": "FM_Radio",
+    "version": "0.0.1",
+    "description": "FM radio drive for microbit",
+    "license": "MIT",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "FM.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true
+}
