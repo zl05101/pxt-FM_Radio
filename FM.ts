@@ -4,7 +4,7 @@
 * http://www.micropython.org.cn
 */
 
-//% weight=20 color=#0855AA icon="\uf040" block="心点FM收音机"
+//% weight=20 color=#0855AA icon="\uf040" block="收音机"
 namespace RDA5807M{
     let RDA5807M_SLAVE_ADDRESS = 0x10;
     let reg_data = pins.createBuffer(8);
@@ -44,30 +44,11 @@ namespace RDA5807M{
         reg_data[3] = (chan & 0xff);
     }
 
-
-    /**
-     * FM收音机启动
-     * @param none
-     */
-    //% blockId="RDA5807M_begin" block="FM收音机启动"
-    //% weight=70 blockGap=8
-    //% parts=RDA5807M trackArgs=0
-    export function begin():void{
-        pause(50)
-        reg_data[0] = 0x00;
-        reg_data[1] = 0x02;
-        write_register();
-        pause(50);
-        reg_data[0] = 0xD0;
-        reg_data[1] = 0x01;
-        write_register();
-    }
-
     /**
      * FM向下搜台
      * @param none
      */
-    //% blockId="RDA5807M_seekDown" block="FM向下搜台"
+    //% blockId="RDA5807M_seekDown" block="向下搜台"
     //% weight=70 blockGap=8
     //% parts=RDA5807M trackArgs=0
     export function seekDown():void{
@@ -79,7 +60,7 @@ namespace RDA5807M{
      * FM向上搜台
      * @param none
      */
-    //% blockId="RDA5807M_seekUp" block="FM向上搜台"
+    //% blockId="RDA5807M_seekUp" block="向上搜台"
     //% weight=70 blockGap=8
     //% parts=RDA5807M trackArgs=0
     export function seekUp():void{
@@ -91,7 +72,7 @@ namespace RDA5807M{
      * FM获取频率
      * @param none
      */
-    //% blockId="RDA5807M_getFreq" block="FM获取频率"
+    //% blockId="RDA5807M_getFreq" block="获取当前频道的频率"
     //% weight=70 blockGap=8
     //% parts=RDA5807M trackArgs=0
     export function getFreq():number{
@@ -105,7 +86,7 @@ namespace RDA5807M{
      * FM音量加大
      * @param none
      */
-    //% blockId="RDA5807M_volumeUp" block="FM音量加大"
+    //% blockId="RDA5807M_volumeUp" block="音量增大"
     //% weight=70 blockGap=8
     //% parts=RDA5807M trackArgs=0
     export function volumeUp():void{
@@ -120,7 +101,7 @@ namespace RDA5807M{
      * FM音量减小
      * @param none
      */
-    //% blockId="RDA5807M_volumeDown" block="FM音量减小"
+    //% blockId="RDA5807M_volumeDown" block="音量减小"
     //% weight=70 blockGap=8
     //% parts=RDA5807M trackArgs=0
     export function volumeDown():void{
@@ -128,6 +109,24 @@ namespace RDA5807M{
             reg_data[7]--;
         }
         reg_data[0] = 0xD0;
+        write_register();
+    }
+
+    /**
+     * FM收音机启动
+     * @param none
+     */
+    //% blockId="RDA5807M_begin" block="收音机启动"
+    //% weight=70 blockGap=8
+    //% parts=RDA5807M trackArgs=0
+    export function begin():void{
+        pause(50)
+        reg_data[0] = 0x00;
+        reg_data[1] = 0x02;
+        write_register();
+        pause(50);
+        reg_data[0] = 0xD0;
+        reg_data[1] = 0x01;
         write_register();
     }
 }

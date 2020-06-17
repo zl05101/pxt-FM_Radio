@@ -1,31 +1,65 @@
+# Xindkj FM Radio
 
-> Open this page at [https://.github.io//](https://.github.io//)
+makecode xindkj FM module extension for micro:bit.  
 
-## Use as Extension
+Part of the drive base on fizban99's microbit OLED driver:  
+https://github.com/fizban99/microbit_ssd1306  
 
-This repository can be added as an **extension** in MakeCode.
+Author: lz
+Date:   2020.Mar  
 
-* open []()
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/** and import
+![](fm.png)  
+  
 
-## Edit this project ![Build status badge](https://github.com//workflows/MakeCode/badge.svg)
+## Add extension
 
-To edit this repository in MakeCode.
+open your microbit makecode project, in Extension, paste  
 
-* open []()
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/** and click import
+https://github.com/zl05101/pxt-FM_Radio
 
-## Blocks preview
+to search box then search, and click to add.  
 
-This image shows the blocks code from the last commit in master.
-This image may take a few minutes to refresh.
+## Basic usage
 
-![A rendered view of the blocks](https://github.com//raw/master/.github/makecode/blocks.png)
+```
+input.onButtonPressed(Button.A, function () {
+    RDA5807M.seekUp()
+})
+RDA5807M.begin()
+```
 
-#### Metadata (used for search, rendering)
+## API
 
-* for PXT/
-<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+- **begin()**  
+initialize FM module.
+
+- **volumeDown()**  
+volume down
+
+- **volumeUp()**  
+volume up
+
+- **seekUp()**  
+seek up
+
+- **seekDown()**  
+seek down
+
+## Demo
+
+![](demo.png)  
+
+
+
+## License
+
+MIT
+
+Copyright (c) 2018, microbit/micropython Chinese community  
+
+## Supported targets
+
+* for PXT/microbit
+
+
+[From microbit/micropython Chinese community](http://www.micropython.org.cn)
