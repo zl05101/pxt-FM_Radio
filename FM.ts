@@ -4,7 +4,7 @@
 * http://www.micropython.org.cn
 */
 
-//% weight=20 color=#0855AA icon="\uf040" block="收音机"
+//% weight=20 color=#0855AA icon="\uf108" block="收音机"
 namespace RDA5807M{
     let RDA5807M_SLAVE_ADDRESS = 0x10;
     let reg_data = pins.createBuffer(8);
