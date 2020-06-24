@@ -39,9 +39,8 @@ namespace RDA5807M{
         }
         let chan = reg_read_data[0] & 0x03;
         chan = reg_read_data[1] | (chan << 8);
-        chan = chan << 6;
-        reg_data[2] = (chan >> 8) & 0xff;
-        reg_data[3] = (chan & 0xff);
+        reg_data[2] = (chan >> 2) & 0xff;
+        reg_data[3] = reg_data[3] | ((chan & 0x03) << 6);
     }
 
     /**
@@ -78,7 +77,7 @@ namespace RDA5807M{
     export function getFreq():number{
         let temp = (reg_data[2] * 256) + (reg_data[3] & 0xC0);
         temp = temp >> 6;
-        let freq = 10 * temp + 8700;
+        let freq = (100 * temp + 87000)/1000;
         return freq;
     }
 
